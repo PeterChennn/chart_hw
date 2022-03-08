@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bar</title>
+</head>
+
+<body>
+  <div>
+    <canvas id="myChart" width="800" height="400"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      let originData =
+        [
+          {
+            "統計項目別": "年度",
+            "細項": "99年",
+            "兩性差距（%）": "17.1"
+          },
+          {
+            "統計項目別": "年度",
+            "細項": "100年",
+            "兩性差距（%）": "17.1"
+          },
+          {
+            "統計項目別": "年度",
+            "細項": "101年",
+            "兩性差距（%）": "16.5"
+          },
+          {
+            "統計項目別": "年度",
+            "細項": "102年",
+            "兩性差距（%）": "16.1"
+          },
+          {
+            "統計項目別": "年度",
+            "細項": "103年",
+            "兩性差距（%）": "15.3"
+          },
+          {
+            "統計項目別": "年度",
+            "細項": "104年",
+            "兩性差距（%）": "15"
+          },
+          {
+            "統計項目別": "年度",
+            "細項": "105年",
+            "兩性差距（%）": "14.6"
+          },
+          {
+            "統計項目別": "年度",
+            "細項": "106年",
+            "兩性差距（%）": "14.6"
+          },
+          {
+            "統計項目別": "年度",
+            "細項": "107年",
+            "兩性差距（%）": "14.6"
+          },
+          {
+            "統計項目別": "年度",
+            "細項": "108年",
+            "兩性差距（%）": "14.9"
+          },
+          {
+            "統計項目別": "年度",
+            "細項": "109年",
+            "兩性差距（%）": "14.8"
+          }
+        ]
+
+        let dataContent = originData.map(function(item){
+          let newItem = {
+            x: item.細項,
+            y: item["兩性差距（%）"]
+          } 
+          return newItem;
+        })
+
+        console.log(dataContent)
+        // let date=[
+        //   {x:'Sales', y:20},
+        //   {x:'Revenue', y:10}
+        // ]
+
+      var ctx = document.getElementById('myChart');
+      // const labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"];
+      const data = {
+        // labels: labels,
+        datasets: [{
+          label: '性別薪資差距',
+          data: dataContent,
+          backgroundColor:
+            [
+              'rgba(255, 99, 132, 0.2)',
+            ],
+          borderColor:
+            [
+              'rgb(255, 99, 132)',
+            ],
+          borderWidth: 1
+        }]
+      };
+
+      const config = {
+        type: 'bar',
+        data: data,
+        options: {
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        },
+      };
+      
+      const myChart = new Chart(ctx, config)
+    </script>
+  </div>
+  
+  
+</body>
+</html>
